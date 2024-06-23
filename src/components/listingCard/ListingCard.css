@@ -1,0 +1,93 @@
+/* src/components/ListingCard.css */
+.card {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 80%;
+  margin: 16px 0;
+}
+
+.image-container {
+  width: 500px;
+  position: relative;
+}
+
+.property-image {
+  width: 100%;
+  height: auto;
+}
+
+.badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: green;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.superagent {
+  top: 40px;
+  background: purple;
+}
+
+.content {
+  padding: 16px;
+}
+
+.content h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.content p {
+  margin: 8px 0;
+  color: grey;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.agent-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+}
+
+.agent-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+  padding: 16px;
+}
+
+.action-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: blue;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
