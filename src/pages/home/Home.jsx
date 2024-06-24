@@ -1,6 +1,113 @@
 import React from 'react';
+import { FaBed, FaBath, FaRulerCombined } from 'react-icons/fa';
 import "./home.css";
+import dummy_property from "../../assets/dummy_property.jpg";
 import video from "../../assets/home_video.mp4";
+
+const properties = [
+  {
+    id: 1,
+    image: dummy_property,
+    distance: '1.2km Away',
+    status: 'For Sale',
+    title: 'Villa On Washington Avenue',
+    location: 'Oregon, Homeland Street, plot 345',
+    price: '$450,000',
+    beds: 3,
+    baths: 2,
+    area: '3000 sq ft',
+  },
+  {
+    id: 2,
+    image: dummy_property,
+    distance: '1.2km Away',
+    status: 'For Sale',
+    title: 'Awesome Family Home',
+    location: 'Oregon, Homeland Street, plot 345',
+    price: '$450,000',
+    beds: 3,
+    baths: 2,
+    area: '3000 sq ft',
+  },
+  {
+    id: 3,
+    image: dummy_property,
+    distance: '1.2km Away',
+    status: 'For Rent',
+    title: 'Agile Real Estate Group',
+    location: 'Oregon, Homeland Street, plot 345',
+    price: '$450,000',
+    beds: 3,
+    baths: 2,
+    area: '3000 sq ft',
+  },
+  {
+    id: 4,
+    image: dummy_property,
+    distance: '1.2km Away',
+    status: 'For Sale',
+    title: 'Villa On Washington Avenue',
+    location: 'Oregon, Homeland Street, plot 345',
+    price: '$450,000',
+    beds: 3,
+    baths: 2,
+    area: '3000 sq ft',
+  },
+  {
+    id: 5,
+    image: dummy_property,
+    distance: '1.2km Away',
+    status: 'For Sale',
+    title: 'Awesome Family Home',
+    location: 'Oregon, Homeland Street, plot 345',
+    price: '$450,000',
+    beds: 3,
+    baths: 2,
+    area: '3000 sq ft',
+  },
+  {
+    id: 6,
+    image: dummy_property,
+    distance: '1.2km Away',
+    status: 'For Rent',
+    title: 'Agile Real Estate Group',
+    location: 'Oregon, Homeland Street, plot 345',
+    price: '$450,000',
+    beds: 3,
+    baths: 2,
+    area: '3000 sq ft',
+  }
+];
+
+const PropertyCard = ({ property }) => {
+  return (
+    <div className='propertycard'>
+      <img src={property.image} alt={property.title} />
+      <div className='card-info'>
+        <div className='card-status'>
+          <span className='distance'>{property.distance}</span>
+          <span className='status'>{property.status}</span>
+        </div>
+        <h4 className='card-title'>{property.title}</h4>
+        <p className='location'>{property.location}</p>
+        <div className='card-details'>
+          <div className='detail'>
+            <FaBed /> {property.beds} Beds
+          </div>
+          <div className='detail'>
+            <FaBath /> {property.baths} Bathrooms
+          </div>
+          <div className='detail'>
+            <FaRulerCombined /> {property.area}
+          </div>
+        </div>
+        <div className='card-price'>
+          <span>{property.price}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Home = () => {
   return (
@@ -46,6 +153,25 @@ const Home = () => {
               </button>
             </div>
           </form>
+        </div>
+      </section>
+
+      <section className='property-container'>
+      <div className='secTitle'>
+          <h3 className='title'>Explore new projects in the UAE</h3>
+          <p className='subtitle'>Discover the latest off-plan properties and be informed.</p>
+          <div className='places'>
+            <button className='place active'>Dubai</button>
+            <button className='place'>Abu Dhabi</button>
+            <button className='place'>Sharjah</button>
+            <button className='place'>Ras Al Khaimah</button>
+          </div>
+        </div>
+
+        <div className='secContent'>
+          {properties.map((property) => (
+            <PropertyCard key={property.id} property={property} />
+          ))}
         </div>
       </section>
     </>
