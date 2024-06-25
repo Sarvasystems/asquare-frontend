@@ -1,40 +1,30 @@
-/* src/components/ListingCard.css */
-.card {
+.rent-buy-card {
+  display: flex;
+  flex-direction: row;
   background: white;
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  width: 80%;
   margin: 16px 0;
 }
 
 .image-container {
-  width: 500px;
+  width: 40%;
   position: relative;
 }
 
 .property-image {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
 }
 
-.badge {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: green;
-  color: white;
-  padding: 4px 8px;
-  border-radius: 5px;
+.information {
+  width: 60%;
   display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.superagent {
-  top: 40px;
-  background: purple;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .content {
@@ -43,7 +33,7 @@
 
 .content h3 {
   margin: 0;
-  font-size: 1.2em;
+  font-size: 1.5em;
 }
 
 .content p {
@@ -53,8 +43,9 @@
 
 .info {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: 16px;
 }
 
 .info-item {
@@ -63,17 +54,11 @@
   gap: 4px;
 }
 
-.agent-info {
+.location-info {
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 16px;
-}
-
-.agent-image {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
 }
 
 .actions {
@@ -84,10 +69,17 @@
 
 .action-button {
   background: none;
-  border: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   cursor: pointer;
-  color: blue;
+  color: #4b2a79;
   display: flex;
   align-items: center;
   gap: 4px;
+  padding: 8px 12px;
+  transition: background 0.3s;
+}
+
+.action-button:hover {
+  background: #f0f0f0;
 }

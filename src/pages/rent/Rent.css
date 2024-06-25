@@ -1,6 +1,6 @@
 .rent-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   padding: 20px;
 }
