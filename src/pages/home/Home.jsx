@@ -1,52 +1,51 @@
 import React from "react";
 import { FaBed, FaBath, FaRulerCombined } from "react-icons/fa";
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "./home.css";
 import dummy_property from "../../assets/dummy_property.jpg";
 import video from "../../assets/home_video.mp4";
 import { Link } from "react-router-dom";
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          dots: true
-        }
+const settings = {
+  dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 6,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        dots: true,
       },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          dots: true
-        }
-      }
-    ]
-  }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        dots: true,
+      },
+    },
+  ],
+};
 
-  const partners = [
-    dummy_property,
-    dummy_property,
-    dummy_property,
-    dummy_property,
-    dummy_property,
-    dummy_property,
-    dummy_property,
-    dummy_property,
-    dummy_property,
-    dummy_property,
-    
-  ];
+const partners = [
+  dummy_property,
+  dummy_property,
+  dummy_property,
+  dummy_property,
+  dummy_property,
+  dummy_property,
+  dummy_property,
+  dummy_property,
+  dummy_property,
+  dummy_property,
+];
 const properties = [
   {
     id: 1,
@@ -277,22 +276,26 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <button className='list-property-button'>List Your Property</button>
+          <button className="list-property-button">List Your Property</button>
         </div>
       </section>
 
-      <section className='partners-carousel'>
-      <div className='partners-container'>
-        <h2>PARTNERS WITH DUBAI’S LEADING DEVELOPERS</h2>
-        <Slider {...settings}>
-          {partners.map((partner, index) => (
-            <div key={index} className='partner-slide'>
-              <img src={partner} alt={`Partner ${index + 1}`} className='partner-logo' />
-            </div>
-          ))}
-        </Slider>
-      </div>
-    </section>
+      <section className="partners-carousel">
+        <div className="partners-container">
+          <h2>PARTNERS WITH DUBAI’S LEADING DEVELOPERS</h2>
+          <Slider {...settings}>
+            {partners.map((partner, index) => (
+              <div key={index} className="partner-slide">
+                <img
+                  src={partner}
+                  alt={`Partner ${index + 1}`}
+                  className="partner-logo"
+                />
+              </div>
+            ))}
+          </Slider>
+        </div>
+      </section>
     </>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./FilterNavbar.css";
+import useClickOutside from "../../hooks/UseClickOutside";
 
 const SearchBar = ({ currentPageType }) => {
   const [pageType, setPageType] = useState(currentPageType);
@@ -24,6 +25,17 @@ const SearchBar = ({ currentPageType }) => {
       maxPrice,
     });
   };
+
+  const dropdownRef = React.createRef();
+  const priceDropdownRef = React.createRef();
+
+  useClickOutside(dropdownRef, () => {
+    setIsDropdownOpen(false);
+  });
+
+  useClickOutside(priceDropdownRef, () => {
+    setPriceDropdownOpen(false);
+  });
 
   const handleClear = () => {
     setPageType(currentPageType);
@@ -107,7 +119,7 @@ const SearchBar = ({ currentPageType }) => {
           <option value="compound">Compound</option>
           <option value="duplex">Duplex</option>
         </select>
-        <div className="custom-dropdown">
+        <div className="custom-dropdown" ref={dropdownRef}>
           <div
             className={`dropdown-header ${
               beds?.length || baths.length ? "active" : ""
@@ -162,7 +174,7 @@ const SearchBar = ({ currentPageType }) => {
             </div>
           )}
         </div>
-        <div className="price-dropdown">
+        <div className="price-dropdown" ref={priceDropdownRef}>
           <div className="dropdown-header" onClick={togglePriceDropdown}>
             Price {minPrice && maxPrice ? `(${minPrice} - ${maxPrice})` : ""}
           </div>
