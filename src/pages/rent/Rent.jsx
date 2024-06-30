@@ -1,5 +1,6 @@
 import React from "react";
 import ListingCard from "../../components/listingCard/ListingCard";
+import SearchBar from "../../components/filterNavbar/FilterNavbar";
 import "./Rent.css";
 
 const listings = [
@@ -91,11 +92,14 @@ const listings = [
 
 const Rent = () => {
   return (
-    <div className="rent-container">
-      {listings.map((listing, index) => (
-        <ListingCard key={index} listing={listing} />
-      ))}
-    </div>
+    <>
+      <SearchBar currentPageType="rent" />
+      <div className="rent-container">
+        {listings.map((listing, index) => (
+          <ListingCard key={index} listing={listing} />
+        ))}
+      </div>
+    </>
   );
 };
 

@@ -1,6 +1,7 @@
 import React from "react";
 import ListingCard from "../../components/listingCard/ListingCard";
 import "./Buy.css";
+import SearchBar from "../../components/filterNavbar/FilterNavbar";
 
 const listings = [
   {
@@ -91,11 +92,14 @@ const listings = [
 
 const Buy = () => {
   return (
-    <div className="buy-container">
-      {listings.map((listing, index) => (
-        <ListingCard key={index} listing={listing} />
-      ))}
-    </div>
+    <>
+      <SearchBar currentPageType="buy" />
+      <div className="buy-container">
+        {listings.map((listing, index) => (
+          <ListingCard key={index} listing={listing} />
+        ))}
+      </div>
+    </>
   );
 };
 
