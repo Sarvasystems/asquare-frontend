@@ -19,21 +19,25 @@ const ListingCard = ({ listing }) => {
   return (
     <div className="rent-buy-card">
       <div className="image-container">
-        <img src={listing.image} alt="Property" className="property-image" />
+        <img
+          src="https://www.propertyfinder.ae/property/b8a5415d6ab…a/416/272/MODE/47baff/11805976-e16deo.webp?ctr=ae"
+          alt="Property"
+          className="property-image"
+        />
       </div>
       <div className="information">
         <div className="content">
           <h3>{listing.price} AED</h3>
-          <p>{listing.description}</p>
+          <p>{listing.tagline}</p>
           <div className="info">
             <div className="info-item">
-              <FaBed /> {listing.bedrooms}
+              <FaBed /> {listing.beds}
             </div>
             <div className="info-item">
-              <FaBath /> {listing.bathrooms}
+              <FaBath /> {listing.baths}
             </div>
             <div className="info-item">
-              <FaRulerCombined /> {listing.size} sqft
+              <FaRulerCombined /> {listing.area} sqft
             </div>
           </div>
         </div>
