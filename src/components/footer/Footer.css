@@ -1,0 +1,135 @@
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+  }
+  
+  .newsletter-section {
+    background-color: #ff5722;
+    padding: 20px 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .newsletter-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+  }
+  
+  .newsletter-image {
+    width: 150px;
+    height: auto;
+    margin-right: 20px;
+  }
+  
+  .newsletter-text {
+    max-width: 600px;
+  }
+  
+  .newsletter-text h3 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+  }
+  
+  .newsletter-text p {
+    margin: 0 0 10px;
+    font-size: 1em;
+  }
+  
+  .newsletter-input {
+    display: flex;
+    align-items: center;
+  }
+  
+  .newsletter-input input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    font-size: 1em;
+  }
+  
+  .newsletter-input button {
+    padding: 10px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    font-size: 1em;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+  
+  .footer-links-section {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .footer-links-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .footer-column {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+  }
+  
+  .footer-column h4 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  .footer-column p {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+  }
+  
+  .footer-column ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .footer-column ul li {
+    margin-bottom: 5px;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .social-icons i {
+    font-size: 1.2em;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .newsletter-input {
+    display: flex;
+  }
+  
+  .newsletter-input input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    flex: 1;
+  }
+  
+  .newsletter-input button {
+    padding: 10px;
+    border: none;
+    background-color: #ff5722;
+    color: #fff;
+    font-size: 1em;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
