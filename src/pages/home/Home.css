@@ -77,6 +77,7 @@ li {
 video {
   width: 100%;
   height: auto;
+
 }
 
 input {
@@ -88,7 +89,6 @@ body {
 }
 
 .hero {
-  position: relative;
   height: 100vh;
   width: 100%;
 }
@@ -101,6 +101,7 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: -1;
+  filter: brightness(0.5);
 }
 
 .hero .container {
@@ -189,6 +190,7 @@ form {
 
 .property-container {
   padding: 50px; /* Add padding to center the content */
+  background-color: #fff;
 }
 
 .secTitle {
@@ -262,7 +264,6 @@ form {
 .propertycard {
   background: #fff;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s;
   width: 90%;
@@ -288,19 +289,6 @@ form {
   margin-bottom: 10px;
 }
 
-.distance {
-  background: orange;
-  color: #fff;
-  padding: 3px 8px;
-  border-radius: 5px;
-}
-
-.status {
-  background: green;
-  color: #fff;
-  padding: 3px 8px;
-  border-radius: 5px;
-}
 
 .card-title {
   font-size: 18px;
@@ -326,7 +314,7 @@ form {
 
 .card-price {
   font-size: 20px;
-  color: orange;
+  color: #333;
   font-weight: bold;
 }
 

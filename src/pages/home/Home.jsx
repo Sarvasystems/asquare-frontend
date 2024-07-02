@@ -4,9 +4,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./home.css";
+import villa from "../../assets/villaa.jpg";
 import dummy_property from "../../assets/dummy_property.jpg";
 import video from "../../assets/home_video.mp4";
 import { Link } from "react-router-dom";
+import Newsletter from "../../components/newsletter/Newsletter";
+import Testimonial from "../../components/testimonials/Testimonial";
 
 const settings = {
   dots: false,
@@ -35,86 +38,74 @@ const settings = {
 };
 
 const partners = [
-  dummy_property,
-  dummy_property,
-  dummy_property,
-  dummy_property,
-  dummy_property,
-  dummy_property,
-  dummy_property,
-  dummy_property,
-  dummy_property,
-  dummy_property,
+  villa,
+  villa,
+  villa,
+  villa,
+  villa,
+  villa,
+  villa,
+  villa,
+  villa,
+  villa,
 ];
 const properties = [
   {
     id: 1,
-    image: dummy_property,
-    distance: "1.2km Away",
-    status: "For Sale",
+    image: villa,
     title: "Villa On Washington Avenue",
     location: "Oregon, Homeland Street, plot 345",
-    price: "$450,000",
+    price: "450,000 AED",
     beds: 3,
     baths: 2,
     area: "3000 sq ft",
   },
   {
     id: 2,
-    image: dummy_property,
-    distance: "1.2km Away",
-    status: "For Sale",
+    image: villa,
     title: "Awesome Family Home",
     location: "Oregon, Homeland Street, plot 345",
-    price: "$450,000",
+    price: "450,000 AED",
     beds: 3,
     baths: 2,
     area: "3000 sq ft",
   },
   {
     id: 3,
-    image: dummy_property,
-    distance: "1.2km Away",
-    status: "For Rent",
+    image: villa,
     title: "Agile Real Estate Group",
     location: "Oregon, Homeland Street, plot 345",
-    price: "$450,000",
+    price: "450,000 AED",
     beds: 3,
     baths: 2,
     area: "3000 sq ft",
   },
   {
     id: 4,
-    image: dummy_property,
-    distance: "1.2km Away",
-    status: "For Sale",
+    image: villa,
     title: "Villa On Washington Avenue",
     location: "Oregon, Homeland Street, plot 345",
-    price: "$450,000",
+    price: "450,000 AED",
     beds: 3,
     baths: 2,
     area: "3000 sq ft",
   },
   {
     id: 5,
-    image: dummy_property,
-    distance: "1.2km Away",
-    status: "For Sale",
+    image: villa,
     title: "Awesome Family Home",
     location: "Oregon, Homeland Street, plot 345",
-    price: "$450,000",
+    price: "450,000 AED",
     beds: 3,
     baths: 2,
     area: "3000 sq ft",
   },
   {
     id: 6,
-    image: dummy_property,
-    distance: "1.2km Away",
-    status: "For Rent",
+    image: villa,
     title: "Agile Real Estate Group",
     location: "Oregon, Homeland Street, plot 345",
-    price: "$450,000",
+    price: "450,000 AED",
     beds: 3,
     baths: 2,
     area: "3000 sq ft",
@@ -126,10 +117,6 @@ const PropertyCard = ({ property }) => {
     <div className="propertycard">
       <img src={property.image} alt={property.title} />
       <div className="card-info">
-        <div className="card-status">
-          <span className="distance">{property.distance}</span>
-          <span className="status">{property.status}</span>
-        </div>
         <h4 className="card-title">{property.title}</h4>
         <p className="location">{property.location}</p>
         <div className="card-details">
@@ -157,7 +144,7 @@ const Home = () => {
       <section className="hero">
         <video
           className="background-video"
-          src={video}
+          src="https://ggfx-whiteandco.s3.eu-west-2.amazonaws.com/i.prod/home_banner_video_a736cf348b.mp4"
           autoPlay
           muted
           loop
@@ -279,6 +266,7 @@ const Home = () => {
           <button className="list-property-button">List Your Property</button>
         </div>
       </section>
+      <Newsletter />
 
       <section className="partners-carousel">
         <div className="partners-container">
@@ -296,6 +284,7 @@ const Home = () => {
           </Slider>
         </div>
       </section>
+      <Testimonial/>
     </>
   );
 };

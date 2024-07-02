@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import asquaredlogo from "../../assets/logo-Asquared.png";
 import { MdLogin } from "react-icons/md";
@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [active, setActive] = useState("navBar");
+  const [scroll, setScroll] = useState(false);
+
   const showNav = () => {
     setActive("navBar activeNavbar");
   };
@@ -16,8 +18,21 @@ const Navbar = () => {
     setActive("navBar");
   };
 
+  const changeBackground = () => {
+    if (window.scrollY >= 50) {
+      setScroll(true);
+    } else {
+      setScroll(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", changeBackground);
+    return () => window.removeEventListener("scroll", changeBackground);
+  }, []);
+
   return (
-    <section className="navBarSection">
+    <section className={`navBarSection ${scroll ? "scrolled" : ""}`}>
       <header className="header flex">
         <div className="logoDiv">
           <a href="/" className="logo flex">
