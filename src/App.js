@@ -6,9 +6,9 @@ import Footer from "./components/footer/Footer.jsx";
 const App = () => {
   return (
     <>
-      <Navbar />
+     <Navbar /> 
       <Outlet />
-      {/* <Footer/> */}
+      <Footer/> 
     </>
   );
 };
