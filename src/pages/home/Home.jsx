@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { FaBed, FaBath, FaRulerCombined } from "react-icons/fa";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./home.css";
-import villa from "../../assets/villaa.jpg";
 import dummy_property from "../../assets/dummy_property.jpg";
-import video from "../../assets/home_video.mp4";
 import { Link } from "react-router-dom";
 import Newsletter from "../../components/newsletter/Newsletter";
 import Testimonial from "../../components/testimonials/Testimonial";
@@ -37,85 +36,17 @@ const settings = {
   ],
 };
 
-const partners = [
-  villa,
-  villa,
-  villa,
-  villa,
-  villa,
-  villa,
-  villa,
-  villa,
-  villa,
-  villa,
-];
-const properties = [
-  {
-    id: 1,
-    image: villa,
-    title: "Villa On Washington Avenue",
-    location: "Oregon, Homeland Street, plot 345",
-    price: "450,000 AED",
-    beds: 3,
-    baths: 2,
-    area: "3000 sq ft",
-  },
-  {
-    id: 2,
-    image: villa,
-    title: "Awesome Family Home",
-    location: "Oregon, Homeland Street, plot 345",
-    price: "450,000 AED",
-    beds: 3,
-    baths: 2,
-    area: "3000 sq ft",
-  },
-  {
-    id: 3,
-    image: villa,
-    title: "Agile Real Estate Group",
-    location: "Oregon, Homeland Street, plot 345",
-    price: "450,000 AED",
-    beds: 3,
-    baths: 2,
-    area: "3000 sq ft",
-  },
-  {
-    id: 4,
-    image: villa,
-    title: "Villa On Washington Avenue",
-    location: "Oregon, Homeland Street, plot 345",
-    price: "450,000 AED",
-    beds: 3,
-    baths: 2,
-    area: "3000 sq ft",
-  },
-  {
-    id: 5,
-    image: villa,
-    title: "Awesome Family Home",
-    location: "Oregon, Homeland Street, plot 345",
-    price: "450,000 AED",
-    beds: 3,
-    baths: 2,
-    area: "3000 sq ft",
-  },
-  {
-    id: 6,
-    image: villa,
-    title: "Agile Real Estate Group",
-    location: "Oregon, Homeland Street, plot 345",
-    price: "450,000 AED",
-    beds: 3,
-    baths: 2,
-    area: "3000 sq ft",
-  },
-];
-
 const PropertyCard = ({ property }) => {
   return (
     <div className="propertycard">
-      <img src={property.image} alt={property.title} />
+      <img
+        src={
+          property.displayImages && property.displayImages.length > 0
+            ? `http://localhost:5000${property.displayImages[0]}`
+            : dummy_property
+        }
+        alt={property.title}
+      />
       <div className="card-info">
         <h4 className="card-title">{property.title}</h4>
         <p className="location">{property.location}</p>
@@ -139,6 +70,43 @@ const PropertyCard = ({ property }) => {
 };
 
 const Home = () => {
+  const [properties, setProperties] = useState([]);
+  const [developers, setDevelopers] = useState([]);
+  const [selectedCity, setSelectedCity] = useState("Dubai");
+
+  const fetchProperties = async (city) => {
+    try {
+      const response = await axios.get("http://localhost:5000/api/offplanlistings", {
+        params: {
+          limit: 6,
+          page: 1,
+          city: city
+        },
+      });
+      setProperties(response.data);
+    } catch (error) {
+      console.error("Error fetching properties:", error);
+    }
+  };
+
+  const fetchDevelopers = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/api/developers");
+      setDevelopers(response.data);
+    } catch (error) {
+      console.error("Error fetching developers:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProperties(selectedCity);
+    fetchDevelopers();
+  }, [selectedCity]);
+
+  const handleCityChange = (city) => {
+    setSelectedCity(city);
+  };
+
   return (
     <>
       <section className="hero">
@@ -198,10 +166,15 @@ const Home = () => {
             Discover the latest off-plan properties and be informed.
           </p>
           <div className="places">
-            <button className="place active">Dubai</button>
-            <button className="place">Abu Dhabi</button>
-            <button className="place">Sharjah</button>
-            <button className="place">Ras Al Khaimah</button>
+            {["Dubai", "Abu Dhabi", "Sharjah", "Ras Al Khaimah"].map((city) => (
+              <button
+                key={city}
+                className={`place ${selectedCity === city ? "active" : ""}`}
+                onClick={() => handleCityChange(city)}
+              >
+                {city}
+              </button>
+            ))}
           </div>
         </div>
 
@@ -270,21 +243,26 @@ const Home = () => {
 
       <section className="partners-carousel">
         <div className="partners-container">
-          <h2>PARTNERS WITH DUBAI’S LEADING DEVELOPERS</h2>
+          <h2>DEVELOPERS PARTNERS</h2>
           <Slider {...settings}>
-            {partners.map((partner, index) => (
-              <div key={index} className="partner-slide">
-                <img
-                  src={partner}
-                  alt={`Partner ${index + 1}`}
-                  className="partner-logo"
-                />
-              </div>
-            ))}
+            {developers.length > 0 &&
+              developers.map((developer, index) => (
+                <div key={index} className="feature-card">
+                  <img
+                    src={developer.logo}
+                    alt={`Developer ${index + 1}`}
+                    className="feature-logo"
+                  />
+                  <div className="feature-content">
+                    <h3>{developer.title}</h3>
+                    <Link to="/buy">EXPLORE LISTINGS →</Link>
+                  </div>
+                </div>
+              ))}
           </Slider>
         </div>
       </section>
-      <Testimonial/>
+      <Testimonial />
     </>
   );
 };
