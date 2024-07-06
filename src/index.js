@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/home/Home.jsx";
 import Rent from "./pages/rent/Rent.jsx";
 import Buy from "./pages/buy/Buy.jsx";
+import PropertyPage from "./pages/PropertyPage/PropertyPage.jsx";
+import AdminPanel from "./pages/admin/adminPanel/AdminPanel.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -14,6 +16,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/admin",
+        element: <AdminPanel />,
       },
       {
         path: "/rent",

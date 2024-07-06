@@ -1,0 +1,46 @@
+.sadmin-panel {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .admin-sidebar {
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+  }
+  
+  .admin-sidebar h2 {
+    margin-bottom: 20px;
+  }
+  
+  .admin-sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .admin-sidebar li {
+    cursor: pointer;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .admin-sidebar li:hover {
+    background-color: #eaeaea;
+  }
+  
+  .admin-content-container {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .admin-content {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    min-height: 400px;
+  }
+  

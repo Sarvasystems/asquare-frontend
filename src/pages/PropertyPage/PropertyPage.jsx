@@ -1,60 +1,85 @@
-import React, { useState } from "react";
-import "./PropertyPage.css";
-import dummyproperty from "../../assets/dummy_property.jpg"; // Update this with the correct image paths
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+import Slider from "react-slick";
 import { FaBed, FaBath } from "react-icons/fa";
 import { BiArea } from "react-icons/bi";
-import map from "../../assets/map.png";
 import { CSSTransition } from "react-transition-group";
 import MortgageCalculator from "../../components/mortgageCalculator/MortgageCalculator";
-
+import map from "../../assets/map.png";
+import MapComponent from "./MapComponent";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "./PropertyPage.css";
 
 const PropertyPage = () => {
+  const [propertyData, setPropertyData] = useState(null);
   const [showMore, setShowMore] = useState(false);
+  const [showSlider, setShowSlider] = useState(false);
+
+  useEffect(() => {
+    const fetchPropertyData = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/rentalListings/66893d6a339226bb095f9c80'); 
+        setPropertyData(response.data);
+      } catch (error) {
+        console.error('Error fetching property data:', error);
+      }
+    };
+
+    fetchPropertyData();
+  }, []);
 
   const toggleShowMore = () => {
     setShowMore(!showMore);
   };
+
+  const toggleSlider = () => {
+    setShowSlider(!showSlider);
+  };
+
+  if (!propertyData) {
+    return <div>Loading...</div>;
+  }
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1
+  };
+
   return (
     <section className="property-section">
       <div className="containerr">
         <div className="buttons">
-          <button className="show-photos-btn">Show 10 photos</button>
+          <button className="show-photos-btn" onClick={toggleSlider}>Show {propertyData.displayImages.length - 3} photos</button>
           <button className="view-map-btn">View on map</button>
         </div>
         <div className="propertyy-container">
           <div className="large-image">
-            <img src={dummyproperty} alt="Large Property" />
+            <img src={`http://localhost:5000${propertyData.displayImages[0]}`} alt="Large Property" />
           </div>
           <div className="small-images">
-            <img
-              src={dummyproperty}
-              alt="Small Property 1"
-              className="small-image"
-            />
-            <img
-              src={dummyproperty}
-              alt="Small Property 2"
-              className="small-image"
-            />
+            {propertyData.displayImages.slice(1, 3).map((img, index) => (
+              <img src={`http://localhost:5000${img}`} alt={`Small Property ${index + 1}`} className="small-image" key={index} />
+            ))}
           </div>
         </div>
         <div className="property-details">
           <div className="price">
             <div className="price-cost">
-              <h1>1,130,000 AED</h1>
-              <p>
-                Own this from just <strong>4,742 AED/month</strong>
-              </p>
+              <h1>{propertyData.price} AED</h1>
             </div>
             <div className="details">
               <div className="detail-icon">
-                <FaBed /> 2 Bedrooms
+                <FaBed /> {propertyData.beds} Bedrooms
               </div>
               <div className="detail-icon">
-                <FaBath /> 3 Bathrooms
+                <FaBath /> {propertyData.baths} Bathrooms
               </div>
               <div className="detail-icon">
-                <BiArea /> 1,208 sqft / 112 sqm
+                <BiArea /> {propertyData.area} sqft
               </div>
             </div>
           </div>
@@ -65,20 +90,17 @@ const PropertyPage = () => {
         <div className="property-type">
           <div className="type">
             <div className="type-place">
-              <h1>TOWNHOUSE FOR SALE IN AKNAN VILLAS, VARDON</h1>
+              <h1>{propertyData.title}</h1>
               <div className="type-description">
-                3 Bedrooms | Middle Unit | Good Deal
+                {propertyData.tagline}
               </div>
               <div className="type-availabel">
                 <div>
-                  <FaBed /> Property Type: Townhouse
-                </div>
-                <div>
-                  <FaBed /> Service Charges: 4.37 AED per sqft
+                  <FaBed /> Property Type: {propertyData.propertyType}
                 </div>
               </div>
               <div>
-                <FaBed /> Availabel From: 29 Jun 2024
+                <FaBed /> Available From: {new Date(propertyData.availableFrom).toLocaleDateString()}
               </div>
             </div>
           </div>
@@ -95,8 +117,8 @@ const PropertyPage = () => {
                   <img src={map} alt="map" />
                 </div>
                 <div className="map-description">
-                  <div>Aknan Villa</div>
-                  <div>Dubai, Damac Hills 2, Vardon</div>
+                  <div>{propertyData.location}</div>
+                  <div>{propertyData.community}</div>
                 </div>
               </div>
             </div>
@@ -111,15 +133,11 @@ const PropertyPage = () => {
               <h1>Amenities</h1>
             </div>
             <div className="amenities-details">
-              <div className="amenities-detail-icon">
-                <FaBed /> Central A/C
-              </div>
-              <div className="amenities-detail-icon">
-                <FaBath /> Balcony
-              </div>
-            </div>
-            <div className="amenities-detail-icon">
-              <BiArea /> Security
+              {propertyData.amenities.map((amenity, index) => (
+                <div className="amenities-detail-icon" key={index}>
+                  <FaBed /> {amenity}
+                </div>
+              ))}
             </div>
           </div>
           <div className="ad"></div>
@@ -131,14 +149,8 @@ const PropertyPage = () => {
           <div className="actual-features">
             <h2>Description</h2>
             <p>Property Details:</p>
-            <ul>
-              <li>- 2 Bedroom</li>
-              <li>- 3 Bathrooms</li>
-              <li>- 2 Parking Space</li>
-              <li>- Private Garden</li>
-              <li>- Open Kitchen</li>
-            </ul>
-
+              {propertyData.description} 
+  
             <CSSTransition
               in={showMore}
               timeout={300}
@@ -148,47 +160,10 @@ const PropertyPage = () => {
               <div className="transition-features">
                 <h3>Features:</h3>
                 <ul>
-                  <li>- Gym and swimming pool</li>
-                  <li>- Kids nursery and play area</li>
-                  <li>- Mosque</li>
-                  <li>- Restaurants</li>
-                  <li>- Public Transport</li>
-                  <li>- 24 Hour video security</li>
-                  <li>- Bicycle track</li>
-                  <li>- Tennis court</li>
-                  <li>- Shopping mall</li>
-                  <li>- Indoor health club</li>
-                  <li>- kids pool</li>
+                  {propertyData.description.split('\n').map((line, index) => (
+                    <li key={index}>{line}</li>
+                  ))}
                 </ul>
-                <br />
-                <p>
-                  DAMAC Hills 2 is a completely self-contained community that
-                  balances tranquil with active, away from the bustle of the
-                  city and yet with easy access to its business and leisure
-                  hubs. In addition to the new and exciting upcoming features,
-                  the community plays host to a community center with a
-                  supermarket, state-of-the-art gymnasium, food trucks and more.
-                  <br />
-                  Company Name: AGCO Properties <br />
-                  RERA ORN: 939893
-                </p>
-                <br />
-                <p>
-                  Office Address: P. O. Box 118322, Office 707 Damac Smart
-                  Heights Building, Barsha Heights – TECOM, Dubai.
-                </p>
-                <p>
-                  Company Profile: AGCO Properties had been built on years of
-                  passion in real estate business and uncompromised adherence to
-                  professionalism. Our in-house team is made up of
-                  representatives that know engaging and distinct group
-                  specializing in business and family residential property and
-                  in development land and capital markets in Dubai to be a top
-                  choice for real estate services. Our core values shall consist
-                  of giving real and factual information and recommendations to
-                  our clients as a way of embracing the fact that they have
-                  different needs which should be met professionally.
-                </p>
               </div>
             </CSSTransition>
 
@@ -202,13 +177,35 @@ const PropertyPage = () => {
 
         <div className="mortage-details">
           <div className="mortage">
-            <MortgageCalculator/>
+            <MortgageCalculator />
           </div>
           <div className="ad"></div>
         </div>
 
+        <div className="property-location">
+          <div className="map-container">
+            <MapComponent location={propertyData.location} community={propertyData.community}/>
+          </div>
+          <div className="ad"></div>
+        </div>
         <div className="horizontal-line"></div>
+
       </div>
+
+      {showSlider && (
+        <div className="slider-overlay">
+          <div className="slider-popup">
+            <button className="close-button" onClick={toggleSlider}>X</button>
+            <Slider {...sliderSettings}>
+              {propertyData.displayImages.slice(3).map((img, index) => (
+                <div key={index}>
+                  <img src={`http://localhost:5000${img}`} alt={`Property ${index + 4}`} className="slider-image" />
+                </div>
+              ))}
+            </Slider>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
