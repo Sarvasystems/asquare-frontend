@@ -35,9 +35,9 @@ const Navbar = () => {
     <section className={`navBarSection ${scroll ? "scrolled" : ""}`}>
       <header className="header flex">
         <div className="logoDiv">
-          <a href="/" className="logo flex">
+          <Link to="/" className="logo flex">
             <img src={asquaredlogo} alt="logo" />
-          </a>
+          </Link>
         </div>
 
         <div className={active}>
@@ -61,43 +61,36 @@ const Navbar = () => {
             </li>
 
             <li className="navItem">
-              <a href="/" className="navLink">
+              <Link to="/commercial" className="navLink">
                 Commercial
-              </a>
+              </Link>
             </li>
 
             <li className="navItem">
-              <a href="/" className="navLink">
-                Residential
-              </a>
-            </li>
-
-            <li className="navItem">
-              <a href="/" className="navLink">
+              <Link to="/offPlan" className="navLink">
                 OffPlan
-              </a>
+              </Link>
             </li>
 
             <li className="navItem">
-              <a href="/" className="navLink">
+              <Link to="/about" className="navLink">
                 About
-              </a>
+              </Link>
             </li>
 
             <li className="navItem">
-              <a href="/" className="navLink">
+              <Link to="/contact" className="navLink">
                 Contact
-              </a>
+              </Link>
             </li>
 
             <button className="btn loginbtn">
-              <a href="/">
+              <Link to="/">
                 <MdLogin className="login-icon" />
-              </a>
-              <a href="/" className="login">
-                {" "}
+              </Link>
+              <Link to="/" className="login">
                 Log In
-              </a>
+              </Link>
             </button>
           </ul>
 

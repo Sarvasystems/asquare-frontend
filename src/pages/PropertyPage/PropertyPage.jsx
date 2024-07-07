@@ -1,28 +1,32 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 import Slider from "react-slick";
 import { FaBed, FaBath } from "react-icons/fa";
 import { BiArea } from "react-icons/bi";
 import { CSSTransition } from "react-transition-group";
 import MortgageCalculator from "../../components/mortgageCalculator/MortgageCalculator";
 import map from "../../assets/map.png";
-import MapComponent from "./MapComponent";
+import MapComponent from "../../components/MapComponent";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./PropertyPage.css";
+import { useParams } from "react-router-dom";
 
 const PropertyPage = () => {
   const [propertyData, setPropertyData] = useState(null);
   const [showMore, setShowMore] = useState(false);
   const [showSlider, setShowSlider] = useState(false);
+  const { propertyId } = useParams();
 
   useEffect(() => {
     const fetchPropertyData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/rentalListings/66893d6a339226bb095f9c80'); 
+        const response = await axios.get(
+          `http://localhost:5000/api/rentalListings/${propertyId}`
+        );
         setPropertyData(response.data);
       } catch (error) {
-        console.error('Error fetching property data:', error);
+        console.error("Error fetching property data:", error);
       }
     };
 
@@ -46,23 +50,33 @@ const PropertyPage = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
   };
 
   return (
     <section className="property-section">
       <div className="containerr">
         <div className="buttons">
-          <button className="show-photos-btn" onClick={toggleSlider}>Show {propertyData.displayImages.length - 3} photos</button>
+          <button className="show-photos-btn" onClick={toggleSlider}>
+            Show {propertyData.displayImages.length - 3} photos
+          </button>
           <button className="view-map-btn">View on map</button>
         </div>
         <div className="propertyy-container">
           <div className="large-image">
-            <img src={`http://localhost:5000${propertyData.displayImages[0]}`} alt="Large Property" />
+            <img
+              src={`http://localhost:5000${propertyData.displayImages[0]}`}
+              alt="Large Property"
+            />
           </div>
           <div className="small-images">
             {propertyData.displayImages.slice(1, 3).map((img, index) => (
-              <img src={`http://localhost:5000${img}`} alt={`Small Property ${index + 1}`} className="small-image" key={index} />
+              <img
+                src={`http://localhost:5000${img}`}
+                alt={`Small Property ${index + 1}`}
+                className="small-image"
+                key={index}
+              />
             ))}
           </div>
         </div>
@@ -91,16 +105,15 @@ const PropertyPage = () => {
           <div className="type">
             <div className="type-place">
               <h1>{propertyData.title}</h1>
-              <div className="type-description">
-                {propertyData.tagline}
-              </div>
+              <div className="type-description">{propertyData.tagline}</div>
               <div className="type-availabel">
                 <div>
                   <FaBed /> Property Type: {propertyData.propertyType}
                 </div>
               </div>
               <div>
-                <FaBed /> Available From: {new Date(propertyData.availableFrom).toLocaleDateString()}
+                <FaBed /> Available From:{" "}
+                {new Date(propertyData.availableFrom).toLocaleDateString()}
               </div>
             </div>
           </div>
@@ -149,8 +162,8 @@ const PropertyPage = () => {
           <div className="actual-features">
             <h2>Description</h2>
             <p>Property Details:</p>
-              {propertyData.description} 
-  
+            {propertyData.description}
+
             <CSSTransition
               in={showMore}
               timeout={300}
@@ -160,7 +173,7 @@ const PropertyPage = () => {
               <div className="transition-features">
                 <h3>Features:</h3>
                 <ul>
-                  {propertyData.description.split('\n').map((line, index) => (
+                  {propertyData.description.split("\n").map((line, index) => (
                     <li key={index}>{line}</li>
                   ))}
                 </ul>
@@ -184,22 +197,30 @@ const PropertyPage = () => {
 
         <div className="property-location">
           <div className="map-container">
-            <MapComponent location={propertyData.location} community={propertyData.community}/>
+            <MapComponent
+              location={propertyData.location}
+              community={propertyData.community}
+            />
           </div>
           <div className="ad"></div>
         </div>
         <div className="horizontal-line"></div>
-
       </div>
 
       {showSlider && (
         <div className="slider-overlay">
           <div className="slider-popup">
-            <button className="close-button" onClick={toggleSlider}>X</button>
+            <button className="close-button" onClick={toggleSlider}>
+              X
+            </button>
             <Slider {...sliderSettings}>
               {propertyData.displayImages.slice(3).map((img, index) => (
                 <div key={index}>
-                  <img src={`http://localhost:5000${img}`} alt={`Property ${index + 4}`} className="slider-image" />
+                  <img
+                    src={`http://localhost:5000${img}`}
+                    alt={`Property ${index + 4}`}
+                    className="slider-image"
+                  />
                 </div>
               ))}
             </Slider>

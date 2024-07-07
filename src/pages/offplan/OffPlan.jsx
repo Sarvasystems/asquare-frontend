@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import ListingCard from "../../components/listingCard/ListingCard";
 import SearchBar from "../../components/filterNavbar/FilterNavbar";
-import { RentListingApi } from "../../services/ListingApis";
+import { offPlanListingApi } from "../../services/ListingApis";
 import { navbarFilterApi } from "../../services/filterApis";
-import "./Rent.css";
+import "./OffPlan.css";
 
-const Rent = () => {
-  const [rentListingData, setRentListingData] = useState([]);
+const OffPlan = () => {
+  const [offPlanListingData, setoffPlanListingData] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const [isFiltered, setIsFiltered] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const rentListing = await RentListingApi();
-        setRentListingData(rentListing?.rentalListings);
+        const offPlanListing = await offPlanListingApi();
+        setoffPlanListingData(offPlanListing?.rentalListings);
         console.log(rentListing?.rentalListings);
       } catch (error) {
         console.log(error);
@@ -41,13 +41,9 @@ const Rent = () => {
 
   return (
     <>
-      <SearchBar
-        currentPageType="rent"
-        onFilter={handleFilter}
-        onClear={handleClearFilter}
-      />
-      <div className="rent-container">
-        {(isFiltered ? filterData : rentListingData)?.map((listing) => (
+      <SearchBar onFilter={handleFilter} onClear={handleClearFilter} />
+      <div className="offPlan-container">
+        {(isFiltered ? filterData : offPlanListingData)?.map((listing) => (
           <ListingCard key={listing._id} listing={listing} />
         ))}
       </div>
@@ -55,4 +51,4 @@ const Rent = () => {
   );
 };
 
-export default Rent;
+export default OffPlan;
