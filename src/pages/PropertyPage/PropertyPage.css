@@ -35,10 +35,7 @@
   }
   
   .buttons {
-    left: 8%;
-    bottom: 8%;
-    position: absolute;
- 
+    position: relative;
   }
   
   .show-photos-btn, .view-map-btn {
@@ -93,7 +90,6 @@
   
   .details {
     display: flex;
-    align-items: flex-end;
     gap: 10px;
   }
 
@@ -355,4 +351,8 @@
 
   .slick-dots li button:before {
     color: #fff;
+  }
+
+  .navItem .navLink{
+    color: black !important;
   }
