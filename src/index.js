@@ -22,6 +22,10 @@ const appRouter = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/property",
+        element: <PropertyPage />,
+      },
+      {
         path: "/admin",
         element: <AdminPanel />,
       },

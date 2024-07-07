@@ -11,6 +11,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./PropertyPage.css";
 import { useParams } from "react-router-dom";
+import ad from "../../assets/landing_page.png";
 
 const PropertyPage = () => {
   const [propertyData, setPropertyData] = useState(null);
@@ -56,12 +57,7 @@ const PropertyPage = () => {
   return (
     <section className="property-section">
       <div className="containerr">
-        <div className="buttons">
-          <button className="show-photos-btn" onClick={toggleSlider}>
-            Show {propertyData.displayImages.length - 3} photos
-          </button>
-          <button className="view-map-btn">View on map</button>
-        </div>
+      
         <div className="propertyy-container">
           <div className="large-image">
             <img
@@ -79,6 +75,10 @@ const PropertyPage = () => {
               />
             ))}
           </div>
+        </div>
+        <div className="buttons">
+          <button className="show-photos-btn" onClick={toggleSlider}>Show {propertyData.displayImages.length - 3} photos</button>
+          <button className="view-map-btn">View on map</button>
         </div>
         <div className="property-details">
           <div className="price">
@@ -137,6 +137,7 @@ const PropertyPage = () => {
             </div>
           </div>
           <div className="ad"></div>
+
         </div>
         <div className="horizontal-line"></div>
 
@@ -162,8 +163,7 @@ const PropertyPage = () => {
           <div className="actual-features">
             <h2>Description</h2>
             <p>Property Details:</p>
-            {propertyData.description}
-
+              <div class="description-container"><pre>{propertyData.description} </pre></div>
             <CSSTransition
               in={showMore}
               timeout={300}

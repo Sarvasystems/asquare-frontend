@@ -70,7 +70,7 @@ const AddOffPlanListing = () => {
   const handleUploadImages = async () => {
     try {
       const formData = new FormData();
-      formData.append('image', imageFile);
+      formData.append('images', imageFile);
 
       const response = await axios.post(`http://localhost:5000/api/offPlanListings/upload/${uploadedId}`, formData, {
         headers: {
@@ -175,7 +175,7 @@ const AddOffPlanListing = () => {
           {showUploadFields && (
             <div className="form-section">
               <h3>Upload Images</h3>
-              <input type="file" onChange={handleImageChange} />
+              <input type="file" onChange={handleImageChange} multiple/>
               <button onClick={handleUploadImages} disabled={!imageFile}>Upload Image</button>
             </div>
           )}
@@ -189,3 +189,4 @@ const AddOffPlanListing = () => {
 };
 
 export default AddOffPlanListing;
+  
