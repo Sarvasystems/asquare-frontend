@@ -7,6 +7,10 @@ import Rent from "./pages/rent/Rent.jsx";
 import Buy from "./pages/buy/Buy.jsx";
 import PropertyPage from "./pages/PropertyPage/PropertyPage.jsx";
 import AdminPanel from "./pages/admin/adminPanel/AdminPanel.jsx";
+import OffPlan from "./pages/offplan/OffPlan.jsx";
+import Commercial from "./pages/commercial/Commercial.jsx";
+import About from "./pages/about/About.jsx";
+import Contact from "./pages/contact/Contact.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -28,6 +32,26 @@ const appRouter = createBrowserRouter([
       {
         path: "/buy",
         element: <Buy />,
+      },
+      {
+        path: "/commercial",
+        element: <Commercial />,
+      },
+      {
+        path: "/offPlan",
+        element: <OffPlan />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/property-details/:propertyId",
+        element: <PropertyPage />,
       },
     ],
   },

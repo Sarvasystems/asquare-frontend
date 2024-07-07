@@ -1,0 +1,6 @@
+.commercial-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 20px;
+}

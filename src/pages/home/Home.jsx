@@ -76,13 +76,16 @@ const Home = () => {
 
   const fetchProperties = async (city) => {
     try {
-      const response = await axios.get("http://localhost:5000/api/offplanlistings", {
-        params: {
-          limit: 6,
-          page: 1,
-          city: city
-        },
-      });
+      const response = await axios.get(
+        "http://localhost:5000/api/offplanlistings",
+        {
+          params: {
+            limit: 6,
+            page: 1,
+            city: city,
+          },
+        }
+      );
       setProperties(response.data);
     } catch (error) {
       console.error("Error fetching properties:", error);
