@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./home.css";
 import dummy_property from "../../assets/dummy_property.jpg";
+import herocover from "../../assets/hero_cover.mp4";
 import { Link } from "react-router-dom";
 import Newsletter from "../../components/newsletter/Newsletter";
 import Testimonial from "../../components/testimonials/Testimonial";
@@ -115,7 +116,7 @@ const Home = () => {
       <section className="hero">
         <video
           className="background-video"
-          src="https://ggfx-whiteandco.s3.eu-west-2.amazonaws.com/i.prod/home_banner_video_a736cf348b.mp4"
+          src={herocover}
           autoPlay
           muted
           loop

@@ -6,6 +6,12 @@ const About = () => {
   const missionSectionRef = useRef(null);
   const whyChooseRef = useRef(null);
 
+  const handleScroll = () => {
+    if (missionSectionRef.current) {
+      missionSectionRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -40,6 +46,9 @@ const About = () => {
           <div className="about-overlay">
             <h1 className="about-title">About Us</h1>
             <p className="about-subtitle">ASQUARED REAL ESTATE</p>
+            <button className="explore-button" onClick={handleScroll}>
+              Explore Now
+            </button>
           </div>
         </div>
         <div className="mission-section" ref={missionSectionRef}>

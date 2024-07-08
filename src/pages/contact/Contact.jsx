@@ -7,6 +7,12 @@ import "./Contact.css";
 const Contact = () => {
   const informationSectionRef = useRef(null);
 
+  const handleScroll = () => {
+    if (informationSectionRef.current) {
+      informationSectionRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -34,6 +40,9 @@ const Contact = () => {
           <div className="contact-overlay">
             <h1 className="contact-title">Contact Us</h1>
             <p className="contact-subtitle">ASQUARED REAL ESTATE</p>
+            <button className="explore-button" onClick={handleScroll}>
+              Explore Now
+            </button>
           </div>
         </div>
         <div className="information-section" ref={informationSectionRef}>

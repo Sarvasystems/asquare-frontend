@@ -91,7 +91,8 @@ const Newsletter = () => {
               onChange={onChange}
               required
             />
-            <button type="submit">Send</button>
+            <button className='btn' type="submit">
+              <span>Send</span></button>
           </form>
         </div>
         <div className="newsletter-image">

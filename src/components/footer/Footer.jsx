@@ -1,9 +1,10 @@
 import React from "react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
-import { CiFacebook } from "react-icons/ci";
-import { FaChevronRight } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
+import { FaFacebook, FaYoutube, FaChevronRight, FaBitcoin, FaCcVisa, FaCcMastercard, FaGooglePay, FaPaypal, FaCcStripe, FaCcAmazonPay } from "react-icons/fa";
+import { FaXTwitter, FaLocationDot, FaMoneyCheckDollar } from "react-icons/fa6";
+import { BsBank } from "react-icons/bs";
+import footerlogo from "../../assets/logo-Asquared.png"
 
 const Footer = () => {
   return (
@@ -11,24 +12,16 @@ const Footer = () => {
       <div className="main">
         <div className="footer">
           <div className="single-footer">
-            <h4>About Us</h4>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia
-              eius omnis incidunt nisi error minima amet iusto aperiam ipsam
-              assumenda?
-            </p>
+            <img src={footerlogo} alt="footerlogo" className="footer-logo"/>
             <div className="footer-social">
-            <Link to="/" className="footer_social_link">
-               <CiFacebook />
+              <Link to="/" className="footer_social_link">
+                <FaXTwitter />
               </Link>
               <Link to="/" className="footer_social_link">
-               <CiFacebook />
+                <FaFacebook />
               </Link>
               <Link to="/" className="footer_social_link">
-               <CiFacebook />
-              </Link>
-              <Link to="/" className="footer_social_link">
-               <CiFacebook />
+                <FaYoutube />
               </Link>
             </div>
           </div>
@@ -36,30 +29,45 @@ const Footer = () => {
             <h4>Main Menu</h4>
             <ul>
               <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons" /> Home</Link></li>
-              <li><Link to="/buy" className="footer_menu_link"><FaChevronRight className="icons"/> Buy</Link></li>
-              <li><Link to="/rent" className="footer_menu_link"><FaChevronRight className="icons"/> Rent</Link></li>
-              <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons"/> Commercial</Link></li>
-              <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons"/> Residential</Link></li>
-              <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons"/> Off Plan</Link></li>
-              <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons"/> About</Link></li>
-              <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons"/> Contact</Link></li>
+              <li><Link to="/buy" className="footer_menu_link"><FaChevronRight className="icons" /> Buy</Link></li>
+              <li><Link to="/rent" className="footer_menu_link"><FaChevronRight className="icons" /> Rent</Link></li>
+              <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons" /> Commercial</Link></li>
+              <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons" /> Off Plan</Link></li>
             </ul>
           </div>
           <div className="single-footer">
             <h4>Quick Links</h4>
             <ul>
-              <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons"/> Privacy Policy</Link></li>
-              <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons"/> Terms & Conditions</Link></li>
-              <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons"/> Disclaime</Link></li>
+              <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons" /> About</Link></li>
+              <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons" /> Contact</Link></li>
+              <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons" /> Privacy Policy</Link></li>
+              <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons" /> Terms & Conditions</Link></li>
+              <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons" /> Disclaimer</Link></li>
             </ul>
           </div>
           <div className="single-footer">
             <h4>Contact Us</h4>
             <ul>
-              <li><Link to="/" className="footer_menu_link"><FaLocationDot className="icons"/>Office No 2154 - Business Bay - Dubai</Link></li>
-              <li><Link to="/" className="footer_menu_link"><FaLocationDot className="icons"/>(+971) 55 558 1554</Link></li>
-              <li><Link to="/" className="footer_menu_link"><FaLocationDot className="icons"/>info@asquaredre.com</Link></li>
+              <li><Link to="/" className="footer_menu_link"><FaLocationDot className="icons" />Office No 2154 - Business Bay - Dubai</Link></li>
+              <li><Link to="/" className="footer_menu_link"><FaLocationDot className="icons" />(+971) 55 558 1554</Link></li>
+              <li><Link to="/" className="footer_menu_link"><FaLocationDot className="icons" />info@asquaredre.com</Link></li>
             </ul>
+          </div>
+        </div>
+        <div className="payment-options">
+          <div className="payment-heading">
+            <p>We accept all types of payments</p>
+          </div>
+          <div className="payment-icon">
+            <FaBitcoin className="payment-icon-item" />
+            <FaCcVisa className="payment-icon-item" />
+            <FaCcMastercard className="payment-icon-item" />
+            <FaGooglePay className="payment-icon-item" />
+            <FaPaypal className="payment-icon-item" />
+            <FaCcStripe className="payment-icon-item" />
+            <BsBank className="payment-icon-item" />
+            <FaMoneyCheckDollar className="payment-icon-item" />
+            <FaCcAmazonPay className="payment-icon-item" />
           </div>
         </div>
         <div className="copy">
