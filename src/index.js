@@ -11,6 +11,7 @@ import OffPlan from "./pages/offplan/OffPlan.jsx";
 import Commercial from "./pages/commercial/Commercial.jsx";
 import About from "./pages/about/About.jsx";
 import Contact from "./pages/contact/Contact.jsx";
+import Login from "./components/login/Login.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const appRouter = createBrowserRouter([
         path: "/property-details/:propertyId",
         element: <PropertyPage />,
       },
+      {
+        path: "/login",
+        element: <Login/>,
+      }
     ],
   },
 ]);
