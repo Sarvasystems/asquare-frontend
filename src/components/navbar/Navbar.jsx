@@ -5,6 +5,8 @@ import { MdLogin } from "react-icons/md";
 import { IoIosCloseCircle } from "react-icons/io";
 import { TbGridDots } from "react-icons/tb";
 import { Link } from "react-router-dom";
+import Login from "../login/Login";
+
 
 const Navbar = () => {
   const [active, setActive] = useState("navBar");
@@ -32,6 +34,7 @@ const Navbar = () => {
   }, []);
 
   return (
+    <>
     <section className={`navBarSection ${scroll ? "scrolled" : ""}`}>
       <header className="header flex">
         <div className="logoDiv">
@@ -85,10 +88,10 @@ const Navbar = () => {
             </li>
 
             <button className="btn loginbtn">
-              <Link to="/">
+              <Link to="/login">
                 <MdLogin className="login-icon" />
               </Link>
-              <Link to="/" className="login">
+              <Link to="/login" className="login">
                 Log In
               </Link>
             </button>
@@ -104,6 +107,7 @@ const Navbar = () => {
         </div>
       </header>
     </section>
+    </>
   );
 };
 

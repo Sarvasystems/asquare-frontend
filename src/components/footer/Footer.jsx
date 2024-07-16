@@ -25,7 +25,7 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-          <div className="single-footer">
+          <div className="single-footer main-menu">
             <h4>Main Menu</h4>
             <ul>
               <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons" /> Home</Link></li>
@@ -35,7 +35,7 @@ const Footer = () => {
               <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons" /> Off Plan</Link></li>
             </ul>
           </div>
-          <div className="single-footer">
+          <div className="single-footer quick-links">
             <h4>Quick Links</h4>
             <ul>
               <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons" /> About</Link></li>
@@ -45,7 +45,7 @@ const Footer = () => {
               <li><Link to="/" className="footer_menu_link"><FaChevronRight className="icons" /> Disclaimer</Link></li>
             </ul>
           </div>
-          <div className="single-footer">
+          <div className="single-footer contact-link">
             <h4>Contact Us</h4>
             <ul>
               <li><Link to="/" className="footer_menu_link"><FaLocationDot className="icons" />Office No 2154 - Business Bay - Dubai</Link></li>
